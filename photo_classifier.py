@@ -3,8 +3,8 @@
 按照图片的拍摄设备和时间自动将文件进行移动, 在Windows中, 源目录和
 目标目录不能含有冒号, 以管理员身份运行PowerShell, 并执行该程序
 Sort and rename pictures according to the device and date time.
-On Windows, the source and destination directories shouldn't 
-include colon(s); run PowerShell as adiminstrator, then execute 
+On Windows, the source and destination directories shouldn't
+include colon(s); run PowerShell as adiminstrator, then execute
 this program.
 
 """
@@ -23,7 +23,9 @@ def fetch_info(filename):
         with open(filename, 'rb') as f:
             tags = exifread.process_file(f)
 		# replace characters of not number and letter
-        device = re.sub('\W', '_', tags['Image Model'].printable)  
+        device = re.sub('\W+', ' ', tags['Image Model'].printable)
+        device = device.strip()
+        device = re.sub(' ', '_', tags['Image Model'].printable)  
         time = tags['EXIF DateTimeOriginal'].printable
         return device, time
     except Exception as err:

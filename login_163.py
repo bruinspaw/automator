@@ -1,4 +1,4 @@
-"""自动登录163邮箱
+"""自动登录163邮箱-deprecated
 
 网易邮箱的登录框iframe的id会每次加载时会自动变换
 通过BeautifulSoup解析网页自动获取该id

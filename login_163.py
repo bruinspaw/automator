@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 browser = webdriver.Chrome()
 browser.get('https://mail.163.com')
 
-sleep(3)
+sleep(5)
 soup = BeautifulSoup(browser.page_source, 'lxml')
 browser.switch_to.frame(soup.find('iframe')['id'])
 browser.find_element_by_name('email').send_keys('your_account')
